@@ -3752,6 +3752,7 @@ public final class Settings {
 
         /**
 		 * show lockscreen date
+         * Whether to mute annoying notifications
          * @hide
          */
         public static final String SHOW_LOCKSCREEN_DATE = "show_lockscreen_date";
@@ -4030,6 +4031,13 @@ public final class Settings {
 
         /** @hide */ public static final int HEADS_UP_USER_OFF = 0;
         /** @hide */ public static final int HEADS_UP_USER_ON = 1;
+
+        /**
+         * Whether to mute annoying notifications
+         * @hide
+         */
+        public static final String MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD =
+                "mute_annoying_notifications_threshold";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
