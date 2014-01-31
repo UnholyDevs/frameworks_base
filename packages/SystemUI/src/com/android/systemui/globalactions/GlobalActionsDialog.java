@@ -192,6 +192,9 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
                 R.bool.config_useFixedVolume);
 
         mEmergencyAffordanceManager = new EmergencyAffordanceManager(context);
+
+        // Set the initial status of airplane mode toggle
+        mAirplaneState = getUpdatedAirplaneToggleState();
     }
 
     /**
@@ -1430,6 +1433,12 @@ class GlobalActionsDialog implements DialogInterface.OnDismissListener, DialogIn
         mItems.add(mRestartRecovery);
         mItems.add(mRestartBootloader);
         mItems.add(mRestartSystemUI);
+    }
+
+    private ToggleAction.State getUpdatedAirplaneToggleState() {
+        return (Settings.Global.getInt(mContext.getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, 0) == 1) ?
+                ToggleAction.State.On : ToggleAction.State.Off;
     }
 
     private void onAirplaneModeChanged() {
