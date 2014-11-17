@@ -76,6 +76,10 @@
   <!-- Notification info -->
   <java-symbol type="color" name="notification_info_button_text" />
 
+  <!-- Notification light mappings -->
+  <java-symbol type="array" name="notification_light_package_mapping" />
+  <java-symbol type="integer" name="config_deviceLightCapabilities" />
+
   <!-- SSDOU scroll boost optimization -->
   <java-symbol type="bool" name="config_debugBoost" />
   <java-symbol type="array" name="debugBoost_activityList" />
