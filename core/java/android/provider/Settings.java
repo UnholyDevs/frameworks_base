@@ -7261,6 +7261,11 @@ public final class Settings {
          */
         public static final String DEVICE_PAIRED = "device_paired";
 
+        /**
+         * Whether user is allowed to pull down quick settings on secure keyguard.
+         * @hide
+         */
+        public static final String STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD = "status_bar_locked_on_secure_keyguard";
 
         /**
          * This are the settings to be backed up.
@@ -7349,7 +7354,8 @@ public final class Settings {
             STATUS_BAR_SHOW_BATTERY_PERCENT,
             STATUS_BAR_BATTERY_STYLE,
             STATUS_BAR_BATTERY_STYLE_TILE,
-            NFC_PAYMENT_DEFAULT_COMPONENT
+            NFC_PAYMENT_DEFAULT_COMPONENT,
+            STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD
         };
 
         /**
