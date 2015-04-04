@@ -3944,6 +3944,12 @@ public final class Settings {
         public static final String MTP_DIRTY_HACK_SAVE = "mtp_dirty_hack_save";
 
         /**
+         * show the membar in recents
+         *  @hide
+         */
+        public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
+
+        /**
          * Whether to display the reboot option in the power menu
          *
          * @hide
