@@ -347,7 +347,6 @@ public final class Settings {
      * Input: Nothing.
      * <p>
      * Output: Nothing.
-
      */
     @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
     public static final String ACTION_WIFI_SETTINGS =
@@ -3821,6 +3820,12 @@ public final class Settings {
          * @hide
          */
          public static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+
+        /**
+         * show the membar in recents
+         *  @hide
+         */
+        public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
