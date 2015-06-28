@@ -121,6 +121,7 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
     private float mDateTimeTranslation;
     private SparseBooleanArray mRoamingsBySubId = new SparseBooleanArray();
     private boolean mIsRoaming;
+    protected Vibrator mVibrator;
 
     // qs headers
     private ImageView mBackgroundImage;
@@ -182,6 +183,8 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
         mMultiUserSwitch.setOnLongClickListener(this);
         mMultiUserAvatar = (ImageView) mMultiUserSwitch.findViewById(R.id.multi_user_avatar);
 
+        mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
+
         // RenderThread is doing more harm than good when touching the header (to expand quick
         // settings), so disable it for this view
         ((RippleDrawable) mSettingsButton.getBackground()).setForceSoftware(true);
@@ -190,6 +193,12 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
         mBackgroundImage = (ImageView) findViewById(R.id.background_image);
 
         updateResources();
+    }
+
+    public void vibrateheader(int duration) {
+        if (mVibrator != null) {
+            if (mVibrator.hasVibrator()) { mVibrator.vibrate(duration); }
+        }
     }
 
     @Override
@@ -444,6 +453,7 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
         } else if (v == mSettingsButton) {
             startSettingsLongClickActivity();
         }
+        vibrateheader(20);
         return false;
     }
 
