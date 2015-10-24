@@ -3604,6 +3604,12 @@ public final class Settings {
         public static final String SHOW_LOCKSCREEN_DATE = "show_lockscreen_date";
        
         /**
+         * Whether to show media art on lockscreen
+         * @hide
+         */
+        public static final String LOCKSCREEN_MEDIA_METADATA = "lockscreen_media_metadata";
+
+        /**
          * Show or hide clock
          * 0 - hide
          * 1 - show (default)
@@ -3689,7 +3695,6 @@ public final class Settings {
          * @hide
          */
         public static final String VOLUME_ROCKER_WAKE = "volume_rocker_wake";
-
 
         /**
          * Whether or not volume button music controls should be enabled to seek media tracks
