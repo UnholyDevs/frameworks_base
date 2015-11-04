@@ -50,6 +50,7 @@ import com.android.systemui.statusbar.NotificationData;
 import com.android.systemui.statusbar.SignalClusterView;
 import com.android.systemui.statusbar.StatusBarIconView;
 import com.android.systemui.statusbar.policy.Clock;
+import com.android.systemui.statusbar.policy.NetworkTraffic;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.tuner.TunerService.Tunable;
 
@@ -88,6 +89,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
     private int mClockLocation;
     private LinearLayout mCenterClockLayout;
     private TextView mCarrierLabel;
+    private NetworkTraffic mNetworkTraffic;
 
      // statusbar logo
     private ImageView mUnholyLogoRight;
@@ -157,6 +159,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mCenterClock = (Clock) statusBar.findViewById(R.id.center_clock);
         mLeftClock = (Clock) statusBar.findViewById(R.id.left_clock);
         mCarrierLabel = (TextView) statusBar.findViewById(R.id.statusbar_carrier_text);
+        mNetworkTraffic = (NetworkTraffic) statusBar.findViewById(R.id.networkTraffic);
         mDarkModeIconColorSingleTone = context.getColor(R.color.dark_mode_icon_color_single_tone);
         mLightModeIconColorSingleTone = context.getColor(R.color.light_mode_icon_color_single_tone);
         mHandler = new Handler();
@@ -604,6 +607,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
             mUnholyLogoRight.setImageTintList(ColorStateList.valueOf(mIconTint));
             mUnholyLogoLeft.setImageTintList(ColorStateList.valueOf(mIconTint));
         }
+        mNetworkTraffic.setDarkIntensity(mDarkIntensity);
     }
 
     public void appTransitionPending() {
