@@ -24,6 +24,9 @@
   <java-symbol type="string" name="reboot_progress" />
   <java-symbol type="string" name="global_action_reboot" />
 
+  <!-- Screenrecord -->
+  <java-symbol type="bool" name="config_enableScreenrecordChord" />
+
   <!-- Notification and battery light -->
   <java-symbol type="bool" name="config_intrusiveNotificationLed" />
   <java-symbol type="bool" name="config_multiColorNotificationLed" />
