@@ -99,4 +99,9 @@
     <string name="screenrecord_notif_pointer_off">Hide pointer</string>
     <!-- Screen record notification error title -->
     <string name="screenrecord_notif_error">Unable to record screen</string>
+
+    <!-- Expanded Desktop QS Tile -->
+    <string name="quick_settings_expanded_desktop">Expanded</string>
+    <string name="quick_settings_expanded_desktop_off">Normal</string>
+
 </resources>
