@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2017 Benzo Rom
+     Copyright (C) 2018 Unholy Developers
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -72,4 +72,10 @@
   <!-- cpu boost for PanelView fling -->
   <java-symbol type="bool" name="config_enableCpuBoostForPanelViewFling" />
   <java-symbol type="array" name="panelview_flingboost_param_value" />
+
+  <!-- SSDOU scroll boost optimization -->
+  <java-symbol type="bool" name="config_debugBoost" />
+  <java-symbol type="array" name="debugBoost_activityList" />
+  <java-symbol type="integer" name="debugBoost_timeout" />
+  <java-symbol type="array" name="debugBoost_param_value" />
 </resources>
