@@ -3725,8 +3725,8 @@ public final class Settings {
          *  @hide
          */
         public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
-
-        /**
+ 
+		/**
          * show lockscreen clock
          *  @hide
          */
