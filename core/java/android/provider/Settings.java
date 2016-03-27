@@ -3734,7 +3734,7 @@ public final class Settings {
 
         /**
          * show lockscreen date
-         *
+		 *
          * @hide
          */
         public static final String SHOW_LOCKSCREEN_DATE = "show_lockscreen_date";
@@ -3985,6 +3985,17 @@ public final class Settings {
          */
         public static final String BLUETOOTH_SHOW_BATTERY = "bluetooth_show_battery";
 
+        /**
+         * Whether the user has enabled headsup (Default 1)
+         * HeadsUp is enabled by default within its Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED
+         * setting. Avoid changing low level implementations and use a System setting to
+         * override per-user heads up on/off preference.
+         *
+         * Enable headsup = 1 (on by default)
+         * Disable headsup = 0
+         * @hide
+         */
+        public static final String HEADS_UP_TIMEOUT = "heads_up_timeout";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
