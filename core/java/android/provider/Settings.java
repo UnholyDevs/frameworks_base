@@ -3712,16 +3712,16 @@ public final class Settings {
          * show lockscreen alarm
          * @hide
          */
-        public static final String SHOW_LOCKSCREEN_ALARM = "show_lockscreen_alarm";
+        public static final String SHOW_LOCKSCREEN_ALARM = "show_lockscreen_alarm";	
 
         /**
          * Whether to show the battery info on the lockscreen while charging
          * @hide
-         */	
+         */
         public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
 
         /**
-         * show lockscreen alarm
+         *  show charging current
          *  @hide
          */
         public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
@@ -3733,8 +3733,7 @@ public final class Settings {
         public static final String SHOW_LOCKSCREEN_CLOCK = "show_lockscreen_clock";
 
         /**
-         * show lockscreen date
-		 *
+		 * show lockscreen date
          * @hide
          */
         public static final String SHOW_LOCKSCREEN_DATE = "show_lockscreen_date";
@@ -3986,6 +3985,18 @@ public final class Settings {
         public static final String BLUETOOTH_SHOW_BATTERY = "bluetooth_show_battery";
 
         /**
+         * Defines the global heads up notification snooze
+         * @hide
+         */
+        public static final String HEADS_UP_NOTIFICATION_SNOOZE = "heads_up_notification_snooze";
+
+        /**
+         * Heads up timeout configuration
+         * @hide
+         */
+        public static final String HEADS_UP_TIMEOUT = "heads_up_timeout";
+
+        /**
          * Whether the user has enabled headsup (Default 1)
          * HeadsUp is enabled by default within its Settings.Global.HEADS_UP_NOTIFICATIONS_ENABLED
          * setting. Avoid changing low level implementations and use a System setting to
@@ -3993,9 +4004,20 @@ public final class Settings {
          *
          * Enable headsup = 1 (on by default)
          * Disable headsup = 0
+         *
+         * @see com.android.systemui.statusbar.BaseStatusBar#addNotification
          * @hide
          */
-        public static final String HEADS_UP_TIMEOUT = "heads_up_timeout";
+        public static final String HEADS_UP_USER_ENABLED = "heads_up_user_enabled";
+
+        /** @hide */ public static final int HEADS_UP_USER_OFF = 0;
+        /** @hide */ public static final int HEADS_UP_USER_ON = 1;
+
+        /**
+         * Defines the global heads up notification snooze
+         * @hide
+         */
+        public static final String HEADS_UP_NOTIFICATION_SNOOZE = "heads_up_notification_snooze";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
