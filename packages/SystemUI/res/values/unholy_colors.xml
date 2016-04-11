@@ -25,17 +25,7 @@
     <color name="fab_color">@*android:color/accent_device_default_light</color>
     <color name="floating_action_button_icon_color">#FFFFFFFF</color>
 
-<<<<<<< HEAD:packages/SystemUI/res/values/unholy_colors.xml
     <!-- Battery charging color -->
     <color name="system_primary_color">@*android:color/material_blue_grey_900</color>
-=======
-    <!-- lockscreen shortcuts -->
-    <dimen name="lockscreen_icon_side_padding">10dp</dimen>
-    <dimen name="lockscreen_icon_size">35dp</dimen>
-    <dimen name="phone_side_padding">10dp</dimen>
-    <dimen name="phone_bottom_padding">40dp</dimen>
-    <dimen name="phone_width">320dp</dimen>
-    <dimen name="phone_height">420dp</dimen>
 
->>>>>>> cf8d907ae3f... SystemUI: Lockscreen shortcut customization:packages/SystemUI/res/values/tesla_dimens.xml
 </resources>
