@@ -3712,7 +3712,7 @@ public final class Settings {
          * @hide
          */
         public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
-    
+
         /**
          * show lockscreen clock
          *  @hide
@@ -3721,7 +3721,8 @@ public final class Settings {
 
         /**
          * show lockscreen date
-         *  @hide
+         *
+         * @hide
          */
         public static final String SHOW_LOCKSCREEN_DATE = "show_lockscreen_date";
 
@@ -3843,6 +3844,13 @@ public final class Settings {
          * @hide
          */
         public static final String ANIM_TILE_DURATION = "anim_tile_duration";
+
+        /**
+         * Change quick settings tiles interpolator
+         *
+         * @hide
+         */
+        public static final String ANIM_TILE_INTERPOLATOR = "anim_tile_interpolator";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
