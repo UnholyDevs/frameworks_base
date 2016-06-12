@@ -3584,6 +3584,24 @@ public final class Settings {
          * 3 = Fullscreen
          */
         public static final String IMMERSIVE_RECENTS = "immersive_recents";
+
+        /**
+         * show lockscreen alarm
+         *  @hide
+         */
+        public static final String SHOW_LOCKSCREEN_ALARM = "show_lockscreen_alarm";
+    
+        /**
+         * show lockscreen clock
+         *  @hide
+         */
+        public static final String SHOW_LOCKSCREEN_CLOCK = "show_lockscreen_clock";
+
+        /**
+         * show lockscreen date
+         *  @hide
+         */
+        public static final String SHOW_LOCKSCREEN_DATE = "show_lockscreen_date";
        
         /**
          * Show or hide clock
