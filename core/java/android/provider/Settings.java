@@ -4101,16 +4101,16 @@ public final class Settings {
         public static final String DISABLE_SUGGESTIONS = "disable_suggestions";
 
         /**
-         * Dashboard portrait columns in settings
-         * @hide
-         */
-        public static final String DASHBOARD_PORTRAIT_COLUMNS = "dashboard_portrait_columns";
-
-        /**
          * Remove tile summaries in settings
          * @hide
          */
         public static final String REMOVE_TILE_SUMMARY = "remove_tile_summary";
+
+        /**
+         * Dashboard portrait columns in settings
+         * @hide
+         */
+        public static final String DASHBOARD_PORTRAIT_COLUMNS = "dashboard_portrait_columns";
 
         /**
          * Dashboard landscape columns in settings
