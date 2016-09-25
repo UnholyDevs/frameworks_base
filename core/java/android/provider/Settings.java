@@ -3744,15 +3744,6 @@ public final class Settings {
         public static final String STATUSBAR_CLOCK_AM_PM_STYLE = "statusbar_clock_am_pm_style";
 
         /**
-         * Style of clock
-         * 0 - Right Clock
-         * 1 - Center Clock
-         * 2 - Left Clock
-         * @hide
-         */
-        public static final String STATUSBAR_CLOCK_STYLE = "statusbar_clock_style";
-
-        /**
          * Shows custom date before clock time
          * 0 - No Date
          * 1 - Small Date
@@ -3826,6 +3817,12 @@ public final class Settings {
          *  @hide
          */
         public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
+
+		/**
+         * Whether to allow one finger quick settings expansion on the left or right side of the statusbar.
+         * @hide
+         */
+        public static final String STATUS_BAR_QUICK_QS_PULLDOWN = "status_bar_quick_qs_pulldown";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
