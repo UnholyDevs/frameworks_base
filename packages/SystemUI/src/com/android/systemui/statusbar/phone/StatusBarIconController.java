@@ -89,6 +89,10 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
     private LinearLayout mCenterClockLayout;
     private TextView mCarrierLabel;
 
+     // statusbar logo
+    private ImageView mUnholyLogoRight;
+    private ImageView mUnholyLogoLeft;
+
     private int mIconSize;
     private int mIconHPadding;
 
@@ -156,6 +160,8 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mDarkModeIconColorSingleTone = context.getColor(R.color.dark_mode_icon_color_single_tone);
         mLightModeIconColorSingleTone = context.getColor(R.color.light_mode_icon_color_single_tone);
         mHandler = new Handler();
+        mUnholyLogoRight = (ImageView) statusBar.findViewById(R.id.unholy_logo);
+        mUnholyLogoLeft = (ImageView) statusBar.findViewById(R.id.left_unholy_logo);
         loadDimens();
 
         mClock.setStatusBarIconController(this);
@@ -351,11 +357,19 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
     public void hideNotificationIconArea(boolean animate) {
         animateHide(mNotificationIconAreaInner, animate);
         animateHide(mCenterClockLayout, animate);
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_UNHOLY_LOGO, 0) == 1) {
+            animateHide(mUnholyLogoLeft, animate);
+        }
     }
 
     public void showNotificationIconArea(boolean animate) {
         animateShow(mNotificationIconAreaInner, animate);
         animateShow(mCenterClockLayout, animate);
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_UNHOLY_LOGO, 0) == 1) {
+            animateShow(mUnholyLogoLeft, animate);
+        }
     }
 
     public void setClockVisibility(boolean visible) {
@@ -584,6 +598,12 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mCenterClock.setTextColor(getTint(mTintArea, mCenterClock, mIconTint));
         mLeftClock.setTextColor(getTint(mTintArea, mLeftClock, mIconTint));
         mCarrierLabel.setTextColor(getTint(mTintArea, mCarrierLabel, mIconTint));
+        if (Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_UNHOLY_LOGO_COLOR, 0xFFFFFFFF,
+                UserHandle.USER_CURRENT) == 0xFFFFFFFF) {
+            mUnholyLogoRight.setImageTintList(ColorStateList.valueOf(mIconTint));
+            mUnholyLogoLeft.setImageTintList(ColorStateList.valueOf(mIconTint));
+        }
     }
 
     public void appTransitionPending() {

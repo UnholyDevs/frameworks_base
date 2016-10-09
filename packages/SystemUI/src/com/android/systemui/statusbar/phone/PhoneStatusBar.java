@@ -393,6 +393,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private TextView mCarrierLabel;
     boolean mExpandedVisible;
 
+    // Screw'd logo
+    private boolean mUnholyLogo;
+    private int mUnholyLogoColor;
+    private ImageView mUnholyLogoRight;
+    private ImageView mUnholyLogoLeft;
+    private int mUnholyLogoStyle;
+
     private int mNavigationBarWindowState = WINDOW_STATE_SHOWING;
 
     // the tracker view
@@ -512,6 +519,15 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_CARRIER),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_UNHOLY_LOGO),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_UNHOLY_LOGO_COLOR),
+                    false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_UNHOLY_LOGO_STYLE),
+                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -549,6 +565,16 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ContentResolver resolver = mContext.getContentResolver();
             mShowCarrierLabel = Settings.System.getIntForUser(resolver,
                     Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+            mUnholyLogoStyle = Settings.System.getIntForUser(
+                    resolver, Settings.System.STATUS_BAR_UNHOLY_LOGO_STYLE, 0,
+                    UserHandle.USER_CURRENT);
+            mUnholyLogo = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_UNHOLY_LOGO, 0, mCurrentUserId) == 1;
+            mUnholyLogoColor = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_UNHOLY_LOGO_COLOR, 0xFFFFFFFF, mCurrentUserId);
+            mUnholyLogoLeft = (ImageView) mStatusBarView.findViewById(R.id.left_unholy_logo);
+            mUnholyLogoRight = (ImageView) mStatusBarView.findViewById(R.id.unholy_logo);
+            showUnholyLogo(mUnholyLogo, mUnholyLogoColor, mUnholyLogoStyle);
          }
     }
 
@@ -3675,6 +3701,29 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 return deferred;
             }
         }, cancelAction, afterKeyguardGone);
+    }
+
+    public void showUnholyLogo(boolean show, int color, int style) {
+        if (mStatusBarView == null) return;
+        if (!show) {
+            mUnholyLogoRight.setVisibility(View.GONE);
+            mUnholyLogoLeft.setVisibility(View.GONE);
+            return;
+        }
+        if (color != 0xFFFFFFFF) {
+            mUnholyLogoRight.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            mUnholyLogoLeft.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        } else {
+            mUnholyLogoRight.clearColorFilter();
+            mUnholyLogoLeft.clearColorFilter();
+        }
+        if (style == 0) {
+            mUnholyLogoRight.setVisibility(View.GONE);
+            mUnholyLogoLeft.setVisibility(View.VISIBLE);
+        } else {
+            mUnholyLogoLeft.setVisibility(View.GONE);
+            mUnholyLogoRight.setVisibility(View.VISIBLE);
+        }
     }
 
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
