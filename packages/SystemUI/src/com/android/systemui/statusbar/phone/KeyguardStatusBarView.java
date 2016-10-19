@@ -104,6 +104,7 @@ public class KeyguardStatusBarView extends RelativeLayout
         mBatteryLevel = (TextView) findViewById(R.id.battery_level);
         loadDimens();
         updateUserSwitcher();
+        updateVisibilities();
     }
 
     @Override
