@@ -3608,6 +3608,12 @@ public final class Settings {
          *  @hide
          */
         public static final String SHOW_LOCKSCREEN_ALARM = "show_lockscreen_alarm";
+
+        /**
+         * Whether to show the negociated charger current in the lockscreen
+         * @hide
+         */
+         public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
     
         /**
          * show lockscreen clock
