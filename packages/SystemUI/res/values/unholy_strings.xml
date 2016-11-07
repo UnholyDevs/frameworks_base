@@ -112,6 +112,10 @@
     <string name="recents_multiwin_warning">A multiwindow session is already active.\nJust tap an app if you want to dock it now.</string>
     <string name="recents_multiwin_nolastapp">You removed all recents, please choose an app from launcher or drawer.</string>
 
+    <!-- Screenshot action -->
+    <string name="screenshot_abort_title">No screenshot taken</string>
+    <string name="screenshot_abort_text">Operation aborted</string>
+
     <!-- Lockscreen shortcut customization hints -->
     <string name="left_shortcut_hint">Swipe right for %1$s</string>
     <string name="right_shortcut_hint">Swipe left for %1$s</string>
