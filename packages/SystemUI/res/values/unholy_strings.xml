@@ -81,6 +81,7 @@
 
     <!-- Screenshot QS Tile -->
     <string name="quick_settings_screenshot_label">Screenshot</string>
+    <string name="quick_settings_region_screenshot_label">Partial screenshot</string>
 
     <!-- Heads up snooze toast -->
     <string name="heads_up_snooze_message_one_minute">Pop up notifications from <xliff:g id="string">%s</xliff:g> are snoozing for 1 minute.</string>
