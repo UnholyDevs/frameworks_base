@@ -3657,6 +3657,13 @@ public final class Settings {
         };
 
         /**
+         * IMPORTANT: If you add a new public settings you also have to add it to
+         * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
+         * it to PRIVATE_SETTINGS below. Also add a validator that can validate
+         * the setting value. See an example above.
+         */
+
+        /**
          * Beginning of Unholy System Settings Additions
          * @hide
          */
@@ -3670,6 +3677,18 @@ public final class Settings {
          * 3 = Fullscreen
          */
         public static final String IMMERSIVE_RECENTS = "immersive_recents";
+
+        /**
+         * show clear all recents button
+         * @hide
+         */
+        public static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+
+        /**
+         * location of the clear all rectents button
+         * @hide
+         */
+        public static final String  RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
         /**
          * Whether to show Brightness Icon On Brightness Slider
@@ -3702,8 +3721,8 @@ public final class Settings {
         public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
 
         /**
-         * Whether to show the negociated charger current in the lockscreen
-         * @hide
+         * show lockscreen alarm
+         *  @hide
          */
         public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
 
@@ -3784,13 +3803,6 @@ public final class Settings {
          * @hide
          */
         public static final String STATUSBAR_CLOCK_DATE_POSITION = "statusbar_clock_date_position";
-
-        /**
-         * IMPORTANT: If you add a new public settings you also have to add it to
-         * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
-         * it to PRIVATE_SETTINGS below. Also add a validator that can validate
-         * the setting value. See an example above.
-         */
 
         /**
          * Volume keys control cursor in text fields (default is 1)
