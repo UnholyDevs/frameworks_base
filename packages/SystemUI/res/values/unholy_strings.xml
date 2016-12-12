@@ -20,6 +20,7 @@
 
     <!-- SystemUI Tuner Parts -->
     <string name="systemui_tuner_statusbar_title">SystemUI statusbar options</string>
+    <string name="systemui_tuner_pnc_title">Power notification controls</string>
 
     <!-- Recents Membar -->
     <string name="recents_free_ram">FREE RAM</string>
