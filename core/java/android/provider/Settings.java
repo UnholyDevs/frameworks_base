@@ -3620,12 +3620,6 @@ public final class Settings {
          *  @hide
          */
         public static final String SHOW_LOCKSCREEN_DATE = "show_lockscreen_date";
-       
-        /**
-         * Whether to show media art on lockscreen
-         * @hide
-         */
-        public static final String LOCKSCREEN_MEDIA_METADATA = "lockscreen_media_metadata";
 
         /**
          * Show or hide clock
