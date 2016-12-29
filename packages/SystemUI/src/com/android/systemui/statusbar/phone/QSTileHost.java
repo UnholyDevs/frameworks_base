@@ -55,6 +55,7 @@ import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.IntentTile;
 import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.MagiskManagerTile;
+import com.android.systemui.qs.tiles.LockscreenToggleTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.SoundTile;
@@ -441,6 +442,7 @@ public class QSTileHost implements QSTile.Host, Tunable {
         else if (tileSpec.equals("heads_up")) return new HeadsUpTile(this);
         else if (tileSpec.equals("magiskmanager")) return new MagiskManagerTile(this);
         else if (tileSpec.equals("sound")) return new SoundTile(this);
+        else if (tileSpec.equals("lockscreen")) return  new LockscreenToggleTile(this);
         // Intent tiles.
         else if (tileSpec.startsWith(IntentTile.PREFIX)) return IntentTile.create(this,tileSpec);
         else if (tileSpec.startsWith(CustomTile.PREFIX)) return CustomTile.create(this,tileSpec);
