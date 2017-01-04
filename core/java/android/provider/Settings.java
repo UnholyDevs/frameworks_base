@@ -3915,6 +3915,12 @@ public final class Settings {
         public static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
 
         /**
+         * Whether to enable the pixel navbar animation
+         * @hide
+         */
+        public static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
