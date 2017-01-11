@@ -3605,21 +3605,21 @@ public final class Settings {
 
         /**
          * show lockscreen alarm
-         *  @hide
+         * @hide
          */
         public static final String SHOW_LOCKSCREEN_ALARM = "show_lockscreen_alarm";
 
         /**
- -       * Whether to show the battery info on the lockscreen while charging
+         * Whether to show the battery info on the lockscreen while charging
          * @hide
          */	
- -       public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
+        public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
 
         /**
          * Whether to show the negociated charger current in the lockscreen
          * @hide
          */
-         public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
+        public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
     
         /**
          * show lockscreen clock
