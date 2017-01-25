@@ -158,7 +158,6 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
         mBackgroundImage = (ImageView) findViewById(R.id.background_image);
 
         updateResources();
-
     }
 
     @Override
@@ -407,15 +406,10 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
             // if header is active we want to push the qs panel a little bit further down
             // to have more space for the header image
             post(new Runnable() {
-                public void run() {
-                    setQsPanelOffset();
-                }
-            });
-        }
-        if (mHeaderQsPanel != null) {
-            mHeaderQsPanel.updateSettings();
-        }
-        applyHeaderBackgroundShadow();
+               public void run() {
+                setQsPanelOffset();
+            }
+        });
     }
 
     @Override
