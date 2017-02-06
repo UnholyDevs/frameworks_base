@@ -18,7 +18,12 @@ package com.android.systemui.statusbar.phone;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.database.ContentObserver;
 import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -53,7 +58,6 @@ public class KeyguardStatusBarView extends RelativeLayout
     private boolean mKeyguardUserSwitcherShowing;
     private boolean mBatteryListening;
 
-    private TextView mCarrierLabel;
     private View mSystemIconsSuperContainer;
     private MultiUserSwitch mMultiUserSwitch;
     private ImageView mMultiUserAvatar;
@@ -72,7 +76,6 @@ public class KeyguardStatusBarView extends RelativeLayout
 
     private ContentObserver mObserver = new ContentObserver(new Handler()) {
         public void onChange(boolean selfChange, Uri uri) {
-            showStatusBarCarrier();
             updateVisibilities();
         }
     };
@@ -89,7 +92,6 @@ public class KeyguardStatusBarView extends RelativeLayout
         mMultiUserSwitch = (MultiUserSwitch) findViewById(R.id.multi_user_switch);
         mMultiUserAvatar = (ImageView) findViewById(R.id.multi_user_avatar);
         mBatteryLevel = (TextView) findViewById(R.id.battery_level);
-        mCarrierLabel = (TextView) findViewById(R.id.keyguard_carrier_text);
         loadDimens();
         updateUserSwitcher();
     }
@@ -136,20 +138,6 @@ public class KeyguardStatusBarView extends RelativeLayout
                 mBatteryLevel.getPaddingBottom());
         mBatteryLevel.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                 getResources().getDimensionPixelSize(R.dimen.battery_level_text_size));
-
-        // Respect font size setting.
-        mCarrierLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                getResources().getDimensionPixelSize(
-                        com.android.internal.R.dimen.text_size_small_material));
-        lp = (MarginLayoutParams) mCarrierLabel.getLayoutParams();
-        lp.setMarginStart(
-                getResources().getDimensionPixelSize(R.dimen.keyguard_carrier_text_margin));
-        mCarrierLabel.setLayoutParams(lp);
-
-        lp = (MarginLayoutParams) getLayoutParams();
-        lp.height =  getResources().getDimensionPixelSize(
-                R.dimen.status_bar_header_height_keyguard);
-        setLayoutParams(lp);
     }
 
     private void loadDimens() {
