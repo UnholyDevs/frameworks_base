@@ -3751,6 +3751,15 @@ public final class Settings {
         public static final String STATUSBAR_CLOCK_AM_PM_STYLE = "statusbar_clock_am_pm_style";
 
         /**
+         * Style of clock
+         * 0 - Right Clock
+         * 1 - Center Clock
+         * 2 - Left Clock
+         * @hide
+         */
+        public static final String STATUSBAR_CLOCK_STYLE = "statusbar_clock_style";
+
+        /**
          * Shows custom date before clock time
          * 0 - No Date
          * 1 - Small Date
@@ -3832,27 +3841,6 @@ public final class Settings {
         public static final String STATUS_BAR_QUICK_QS_PULLDOWN = "status_bar_quick_qs_pulldown";
 
         /**
-         * Change quick settings tiles animation style
-         *
-         * @hide
-         */
-        public static final String ANIM_TILE_STYLE = "anim_tile_style";
-
-		/**
-         * Change quick settings tiles animation duration
-         *
-         * @hide
-         */
-        public static final String ANIM_TILE_DURATION = "anim_tile_duration";
-
-        /**
-         * Change quick settings tiles interpolator
-         *
-         * @hide
-         */
-        public static final String ANIM_TILE_INTERPOLATOR = "anim_tile_interpolator";
-
-        /**
          * Number of rows used for the Quick Settings (portrait)
          *
          * @hide
@@ -3879,6 +3867,27 @@ public final class Settings {
          * @hide
          */
         public static final String QS_COLUMNS_LANDSCAPE = "qs_columns_landscape";
+
+        /**
+         * Change quick settings tiles animation style
+         *
+         * @hide
+         */
+        public static final String ANIM_TILE_STYLE = "anim_tile_style";
+
+		/**
+         * Change quick settings tiles animation duration
+         *
+         * @hide
+         */
+        public static final String ANIM_TILE_DURATION = "anim_tile_duration";
+
+        /**
+         * Change quick settings tiles interpolator
+         *
+         * @hide
+         */
+        public static final String ANIM_TILE_INTERPOLATOR = "anim_tile_interpolator";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
