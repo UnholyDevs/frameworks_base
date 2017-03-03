@@ -123,6 +123,13 @@
     <bool name="config_enableCpuBoostForPanelViewFling">false</bool>
     <integer-array name="panelview_flingboost_param_value" />
 
+  <!-- Whether Keypress Boost is enabled -->
+  <bool name="config_enableKeypressBoost">false</bool>
+
+  <!-- Boost parameters which get passed to QPerformance -->
+  <integer-array name="keypressboost_strong_param_value"/>
+  <integer-array name="keypressboost_weak_param_value"/>
+
     <!-- Whether FP unlock Boost is enabled
          Depends on Keypress Boost -->
      <bool name="config_enableFPUnlockBoost">false</bool>
