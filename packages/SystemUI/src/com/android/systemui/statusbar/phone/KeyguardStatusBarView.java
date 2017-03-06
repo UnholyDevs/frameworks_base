@@ -169,17 +169,7 @@ public class KeyguardStatusBarView extends RelativeLayout
             }
         }
         mBatteryLevel.setVisibility(
-                (mBatteryCharging && mForceChargeBatteryText) || mShowBatteryText || mForceBatteryText ? View.VISIBLE : View.GONE);
-
-        if (mCarrierLabel != null) {
-            if (mShowCarrierLabel == 1) {
-                mCarrierLabel.setVisibility(View.VISIBLE);
-            } else if (mShowCarrierLabel == 3) {
-                mCarrierLabel.setVisibility(View.VISIBLE);
-            } else {
-                mCarrierLabel.setVisibility(View.GONE);
-            }
-        }
+               (mBatteryCharging && mForceChargeBatteryText) || mShowBatteryText || mForceBatteryText ? View.VISIBLE : View.GONE);
     }
 
     private void updateSystemIconsLayoutParams() {
