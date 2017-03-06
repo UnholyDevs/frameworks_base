@@ -123,4 +123,9 @@
     <bool name="config_enableCpuBoostForPanelViewFling">false</bool>
     <integer-array name="panelview_flingboost_param_value" />
 
+    <!-- Whether FP unlock Boost is enabled
+         Depends on Keypress Boost -->
+     <bool name="config_enableFPUnlockBoost">false</bool>
+     <integer name="fpunlockboost_duration">700</integer>
+
 </resources>
