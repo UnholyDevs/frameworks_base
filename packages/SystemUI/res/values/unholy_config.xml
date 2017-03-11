@@ -17,4 +17,7 @@
 
     <integer name="config_qs_num_rows_landscape_default">1</integer>
     <integer name="config_qs_num_columns_landscape_default">4</integer>
+
+    <!-- Default value how much apps show the app screenshot on recents view entry -->
+    <integer name="expanded_items_default">2</integer>
 </resources>
