@@ -162,8 +162,6 @@ import com.android.systemui.recents.ScreenPinningRequest;
 import com.android.systemui.recents.events.EventBus;
 import com.android.systemui.recents.events.activity.AppTransitionFinishedEvent;
 import com.android.systemui.recents.events.activity.UndockingTaskEvent;
-import com.android.systemui.slimrecent.RecentController;
-import com.android.systemui.slimrecent.SlimScreenPinningRequest;
 import com.android.systemui.settings.BrightnessController;
 import com.android.systemui.stackdivider.Divider;
 import com.android.systemui.stackdivider.WindowManagerProxy;
@@ -475,10 +473,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private NavigationController mNavigationController;
     private DUPackageMonitor mPackageMonitor;
 
-    private RecentController mSlimRecents;
-
-    private SlimScreenPinningRequest mSlimScreenPinningRequest;
-
     private View.OnTouchListener mUserAutoHideListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
@@ -618,15 +612,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_UNHOLY_LOGO_STYLE),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.USE_SLIM_RECENTS),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.RECENT_CARD_BG_COLOR),
-                    false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.RECENT_CARD_TEXT_COLOR),
-                    false, this, UserHandle.USER_ALL);
             update();
         }
 
@@ -682,9 +667,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             mUnholyLogoLeft = (ImageView) mStatusBarView.findViewById(R.id.left_unholy_logo);
             mUnholyLogoRight = (ImageView) mStatusBarView.findViewById(R.id.unholy_logo);
             showUnholyLogo(mUnholyLogo, mUnholyLogoColor, mUnholyLogoStyle);
-
-            updateRecents();
-            rebuildRecentsScreen();
          }
     }
 
@@ -915,8 +897,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         addNavigationBar();
 
-        updateRecents();
-
         // Status bar settings observer
         SettingsObserver observer = new SettingsObserver(mHandler);
         observer.observe();
@@ -1093,8 +1073,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                         R.id.keyguard_indication_text),
                 mKeyguardBottomArea.getLockIcon());
         mKeyguardBottomArea.setKeyguardIndicationController(mKeyguardIndicationController);
-
-        mSlimScreenPinningRequest = new SlimScreenPinningRequest(mContext);
 
         // set the initial view visibility
         setAreThereNotifications();
@@ -1299,8 +1277,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             ViewGroup parent = (ViewGroup) emergencyViewStub.getParent();
             parent.removeView(emergencyViewStub);
         }
-        updateRecents();
-        rebuildRecentsScreen();
     }
 
     protected BatteryController createBatteryController() {
@@ -1599,7 +1575,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         @Override
         public boolean onLongClick(View v) {
-            if (mRecents == null || !ActivityManager.supportsMultiWindow()
+            if (!ActivityManager.supportsMultiWindow()
                     || !getComponent(Divider.class).getView().getSnapAlgorithm()
                             .isSplitScreenFeasible()) {
                 return false;
@@ -1613,17 +1589,26 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     @Override
     protected void toggleSplitScreenMode(int metricsDockAction, int metricsUndockAction) {
-        if (mRecents == null) {
-            return;
-        }
-        int dockSide = WindowManagerProxy.getInstance().getDockSide();
-        if (dockSide == WindowManager.DOCKED_INVALID) {
-            mRecents.dockTopTask(NavigationBarGestureHelper.DRAG_MODE_NONE,
-                    ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
-        } else {
-            EventBus.getDefault().send(new UndockingTaskEvent());
-            if (metricsUndockAction != -1) {
-                MetricsLogger.action(mContext, metricsUndockAction);
+        if (mSlimRecents != null) {
+            int dockSide = WindowManagerProxy.getInstance().getDockSide();
+            if (dockSide == WindowManager.DOCKED_INVALID) {
+                mSlimRecents.startMultiWin();
+            } else {
+                EventBus.getDefault().send(new UndockingTaskEvent());
+                if (metricsUndockAction != -1) {
+                    MetricsLogger.action(mContext, metricsUndockAction);
+                }
+            }
+        } else if (mRecents != null) {
+            int dockSide = WindowManagerProxy.getInstance().getDockSide();
+            if (dockSide == WindowManager.DOCKED_INVALID) {
+                mRecents.dockTopTask(NavigationBarGestureHelper.DRAG_MODE_NONE,
+                        ActivityManager.DOCKED_STACK_CREATE_MODE_TOP_OR_LEFT, null, metricsDockAction);
+            } else {
+                EventBus.getDefault().send(new UndockingTaskEvent());
+                if (metricsUndockAction != -1) {
+                    MetricsLogger.action(mContext, metricsUndockAction);
+                }
             }
         }
     }
@@ -5335,7 +5320,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     public void showScreenPinningRequest(int taskId, boolean allowCancel) {
         hideRecents(false, false);
-        //mSlimScreenPinningRequest.showPrompt(taskId, allowCancel);
         mScreenPinningRequest.showPrompt(taskId, allowCancel);
     }
 
@@ -5609,71 +5593,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                         handleStopDozing();
                         break;
                 }
-            }
-        }
-    }
-
-    @Override
-    protected void hideRecents(boolean triggeredFromAltTab, boolean triggeredFromHomeKey) {
-        if (mSlimRecents != null) {
-            mSlimRecents.hideRecents(triggeredFromHomeKey);
-        } else {
-            super.hideRecents(triggeredFromAltTab, triggeredFromHomeKey);
-        }
-    }
-
-    @Override
-    protected void toggleRecents() {
-        if (mSlimRecents != null) {
-            sendCloseSystemWindows(mContext, SYSTEM_DIALOG_REASON_RECENT_APPS);
-            mSlimRecents.toggleRecents(mDisplay, mLayoutDirection, getStatusBarView());
-        } else {
-            super.toggleRecents();
-        }
-    }
-
-    @Override
-    protected void preloadRecents() {
-        if (mSlimRecents != null) {
-            mSlimRecents.preloadRecentTasksList();
-        } else {
-            super.preloadRecents();
-        }
-    }
-
-    @Override
-    protected void cancelPreloadingRecents() {
-        if (mSlimRecents != null) {
-            mSlimRecents.cancelPreloadingRecentTasksList();
-        } else {
-            super.cancelPreloadingRecents();
-        }
-    }
-
-    protected void rebuildRecentsScreen() {
-        if (mSlimRecents != null) {
-            mSlimRecents.rebuildRecentsScreen();
-        }
-    }
-
-    protected void updateRecents() {
-        boolean slimRecents = Settings.System.getIntForUser(mContext.getContentResolver(),
-                Settings.System.USE_SLIM_RECENTS, 0, UserHandle.USER_CURRENT) == 1;
-
-        if (slimRecents) {
-            mSlimRecents = new RecentController(mContext, mLayoutDirection);
-            //mSlimRecents.setCallback(this);
-            rebuildRecentsScreen();
-        } else {
-            mSlimRecents = null;
-        }
-    }
-
-    private static void sendCloseSystemWindows(Context context, String reason) {
-        if (ActivityManagerNative.isSystemReady()) {
-            try {
-                ActivityManagerNative.getDefault().closeSystemDialogs(reason);
-            } catch (RemoteException e) {
             }
         }
     }
