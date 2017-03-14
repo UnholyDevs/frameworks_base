@@ -168,6 +168,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -888,6 +889,7 @@ public class NotificationManagerService extends SystemService {
             resolver.registerContentObserver(NOTIFICATION_SOUND_URI,
                     false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(NOTIFICATION_RATE_LIMIT_URI,
+                    false, this, UserHandle.USER_ALL);
             resolver.registerContentObserver(MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD_URI,
                     false, this, UserHandle.USER_ALL);
             update(null);
