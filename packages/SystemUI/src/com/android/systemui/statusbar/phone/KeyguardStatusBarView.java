@@ -345,6 +345,18 @@ public class KeyguardStatusBarView extends RelativeLayout
     public boolean hasOverlappingRendering() {
         return false;
     }
+	
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+		        Settings.System.STATUS_BAR_SHOW_CARRIER), false, mObserver);
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+    }
 
     @Override
     public void onTuningChanged(String key, String newValue) {
@@ -356,17 +368,5 @@ public class KeyguardStatusBarView extends RelativeLayout
                     Settings.Secure.FORCE_CHARGE_BATTERY_TEXT, 0) == 1 ? true : false;
             updateVisibilities();
         }
-    }
-
-    @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
-		        Settings.System.STATUS_BAR_SHOW_CARRIER), false, mObserver);
-    }
-
-    @Override
-    public void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
     }
 }
