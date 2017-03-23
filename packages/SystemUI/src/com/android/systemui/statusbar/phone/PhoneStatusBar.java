@@ -393,7 +393,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private TextView mCarrierLabel;
     boolean mExpandedVisible;
 
-    // Screw'd logo
+    // Unholy logo
     private boolean mUnholyLogo;
     private int mUnholyLogoColor;
     private ImageView mUnholyLogoRight;

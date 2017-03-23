@@ -4040,13 +4040,13 @@ public final class Settings {
                 "mute_annoying_notifications_threshold";
 
         /**
-         * Statusbar Screw'd logo
+         * Statusbar logo
          * @hide
          */
         public static final String STATUS_BAR_UNHOLY_LOGO = "status_bar_unholy_logo";
 
         /**
-         * Statusbar Screw'd logo color setting
+         * Statusbar logo color setting
          * @hide
          */
         public static final String STATUS_BAR_UNHOLY_LOGO_COLOR = "status_bar_unholy_logo_color";
