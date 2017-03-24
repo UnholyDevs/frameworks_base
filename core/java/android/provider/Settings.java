@@ -3954,13 +3954,7 @@ public final class Settings {
          * Enable double tap gesture anywhere on the lock screen put device to sleep
          * @hide
          */
-        public static final String DOUBLE_TAP_SLEEP_ANYWHERE = "double_tap_sleep_anywhere";
-
-        /**
-         *  Enable navigation bar double tap gesture on to put device to sleep
-         * @hide
-         */
-        public static final String DOUBLE_TAP_SLEEP_NAVBAR = "double_tap_sleep_navbar";
+        public static final String DOUBLE_TAP_SLEEP_ANYWHERE = "double_tap_sleep_anywhere";        /**
 
         /**
          * Whether to launch default music player when headset plugged in
