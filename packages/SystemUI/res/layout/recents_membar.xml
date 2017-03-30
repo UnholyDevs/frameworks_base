@@ -27,6 +27,7 @@
 
     <ProgressBar android:id="@+id/recents_memory_bar"
         style="?android:attr/progressBarStyleHorizontal"
+        android:progressTint="@color/recents_membar_color"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_gravity="top|left"
