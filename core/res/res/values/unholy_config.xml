@@ -68,6 +68,12 @@
          avoid 3s delay for certain fpc HALs -->
     <bool name="config_fingerprintRemoveClientOnCancel">false</bool>
 
+    <!-- Default value for proximity check on screen wake
+         NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)
+    -->
+    <bool name="config_proximityCheckOnWake">false</bool>
+    <integer name="config_proximityCheckTimeout">250</integer>
+
     <!-- The duration (in milliseconds) of recent app screen animation. -->
     <integer name="config_recentDefaultDur">300</integer>
 
