@@ -7305,7 +7305,7 @@ public final class Settings {
             DOZE_PULSE_ON_DOUBLE_TAP,
             STATUS_BAR_SHOW_BATTERY_PERCENT,
             STATUS_BAR_BATTERY_STYLE,
-            STATUS_BAR_BATTERY_STYLE_TILE
+            STATUS_BAR_BATTERY_STYLE_TILE,
             NFC_PAYMENT_DEFAULT_COMPONENT
         };
 

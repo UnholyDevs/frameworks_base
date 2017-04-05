@@ -123,7 +123,13 @@ public class LightsService extends SystemService {
         }
 
         private void setLightLocked(int color, int mode, int onMS, int offMS, int brightnessMode) {
-            if (!mLocked && (color != mColor || mode != mMode || onMS != mOnMS || offMS != mOffMS ||
+            if (shouldBeInLowPersistenceMode()) {
+                brightnessMode = BRIGHTNESS_MODE_LOW_PERSISTENCE;
+            } else if (brightnessMode == BRIGHTNESS_MODE_LOW_PERSISTENCE) {
+                brightnessMode = mLastBrightnessMode;
+            }
+
+            if ((color != mColor || mode != mMode || onMS != mOnMS || offMS != mOffMS ||
                     mBrightnessMode != brightnessMode || mReset)) {
                 if (DEBUG) Slog.v(TAG, "setLight #" + mId + ": color=#"
                         + Integer.toHexString(color) + ": brightnessMode=" + brightnessMode);

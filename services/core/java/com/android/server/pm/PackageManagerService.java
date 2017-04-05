@@ -2290,14 +2290,8 @@ public class PackageManagerService extends IPackageManager.Stub {
             // Collect vendor overlay packages. (Do this before scanning any apps.)
             // For security and version matching reason, only consider
             // overlay packages if they reside in the right directory.
-            String overlayThemeDir = SystemProperties.get(VENDOR_OVERLAY_THEME_PROPERTY);
-            if (!overlayThemeDir.isEmpty()) {
-                scanDirTracedLI(new File(VENDOR_OVERLAY_DIR, overlayThemeDir), mDefParseFlags
-                        | PackageParser.PARSE_IS_SYSTEM
-                        | PackageParser.PARSE_IS_SYSTEM_DIR
-                        | PackageParser.PARSE_TRUSTED_OVERLAY, scanFlags | SCAN_TRUSTED_OVERLAY, 0);
-            }
-            scanDirTracedLI(new File(VENDOR_OVERLAY_DIR), mDefParseFlags
+            File vendorOverlayDir = new File(VENDOR_OVERLAY_DIR);
+            scanDirTracedLI(vendorOverlayDir, mDefParseFlags
                     | PackageParser.PARSE_IS_SYSTEM
                     | PackageParser.PARSE_IS_SYSTEM_DIR,
                     scanFlags, 0);
@@ -21072,6 +21066,11 @@ Slog.v(TAG, ":: stepped forward, applying functor at tag " + parser.getName());
             synchronized (mPackages) {
                 return mSettings.wasPackageEverLaunchedLPr(packageName, userId);
             }
+        }
+
+        @Override
+        public String getNameForUid(int uid) {
+            return PackageManagerService.this.getNameForUid(uid);
         }
 
         @Override

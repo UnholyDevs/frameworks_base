@@ -69,7 +69,7 @@ import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.UserInfoController.OnUserInfoChangedListener;
 
 public class QuickStatusBarHeader extends BaseStatusBarHeader implements
-        NextAlarmChangeCallback, OnClickListener, OnLongClickListener, OnUserInfoChangedListener,
+        NextAlarmChangeCallback, OnClickListener, OnUserInfoChangedListener,
         StatusBarHeaderMachine.IStatusBarHeaderMachineObserver, SignalCallback {
 
     private static final String TAG = "QuickStatusBarHeader";

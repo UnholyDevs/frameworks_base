@@ -193,6 +193,7 @@ public abstract class PackageManagerInternal {
      */
     public abstract void setResourceDirs(int userId, String packageName, String[] resourceDirs);
 
+     /**
      * Retrieve the official name associated with a user id.  This name is
      * guaranteed to never change, though it is possible for the underlying
      * user id to be changed.  That is, if you are storing information about

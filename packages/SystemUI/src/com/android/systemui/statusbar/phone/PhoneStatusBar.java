@@ -1507,6 +1507,29 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }
     };
 
+    private View.OnLongClickListener mLongPressBackListener = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            return handleLongPressBack();
+        }
+    };
+
+    private View.OnLongClickListener mRecentsLongClickListener = new View.OnLongClickListener() {
+
+        @Override
+        public boolean onLongClick(View v) {
+            if (mRecents == null || !ActivityManager.supportsMultiWindow()
+                    || !getComponent(Divider.class).getView().getSnapAlgorithm()
+                            .isSplitScreenFeasible()) {
+                return false;
+            }
+
+            toggleSplitScreenMode(MetricsEvent.ACTION_WINDOW_DOCK_LONGPRESS,
+                    MetricsEvent.ACTION_WINDOW_UNDOCK_LONGPRESS);
+            return true;
+        }
+    };
+
     @Override
     protected void toggleSplitScreenMode(int metricsDockAction, int metricsUndockAction) {
         if (mRecents == null) {
@@ -1588,7 +1611,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         mNavigationController.getBar().reorient();
         mNavigationController.getBar().setListeners(mUserAutoHideListener, mLongPressBackListener);
         mNavigationController.getBar().setOnVerticalChangedListener(mVerticalChangedListener);
-
         mAssistManager.onConfigurationChanged();
     }
 
@@ -5098,22 +5120,6 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             if (activityManager.isInLockTaskMode()) {
                 activityManager.stopSystemLockTaskMode();
                 return true;
-            }
-        } catch (RemoteException e) {
-            Log.d(TAG, "Unable to reach activity manager", e);
-        }
-        return false;
-    }
-
-    @Override
-    public void showScreenPinningRequest(int taskId) {
-        if (mKeyguardMonitor.isShowing()) {
-            // Don't allow apps to trigger this from keyguard.
-            return;
-        }
-        // Show screen pinning request, since this comes from an app, show 'no thanks', button.
-        showScreenPinningRequest(taskId, true);
-    }
             }
         } catch (RemoteException e) {
             Log.d(TAG, "Unable to reach activity manager", e);
