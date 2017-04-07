@@ -579,7 +579,7 @@ public class NavigationBarView extends LinearLayout {
         updateTaskSwitchHelper();
         setNavigationIconHints(mNavigationIconHints, true);
 
-        getHomeButton().setVertical(mVertical);
+        getHomeButton().setLandscape(mVertical);
     }
 
     private void updateTaskSwitchHelper() {
