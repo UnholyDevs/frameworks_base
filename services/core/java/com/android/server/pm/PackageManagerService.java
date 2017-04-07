@@ -968,8 +968,6 @@ public class PackageManagerService extends IPackageManager.Stub {
                         filter.hasDataScheme(IntentFilter.SCHEME_HTTPS));
     }
 
-    ArrayList<ComponentName> mDisabledComponentsList;
-
     // Set of pending broadcasts for aggregating enable/disable of components.
     static class PendingPackageBroadcasts {
         // for each user id, a map of <package name -> components within that package>
@@ -1828,8 +1826,18 @@ public class PackageManagerService extends IPackageManager.Stub {
         @Override
         public void onVolumeStateChanged(VolumeInfo vol, int oldState, int newState) {
             if (vol.type == VolumeInfo.TYPE_PRIVATE) {
-                if (vol.state == VolumeInfo.STATE_MOUNTED) {
-                    final String volumeUuid = vol.getFsUuid();
+                final String volumeUuid = vol.getFsUuid();
+                boolean volCurStateMounted = false;
+                // To handle a case where the onVolumeStateChanged callback is called with
+                // volume state MOUNTED, but the current state of volume is changed to
+                // UNMOUNTED/EJECTED state due to asynchronous behaviour of vold.
+                if(volumeUuid != null) {
+                    StorageManager storage = mContext.getSystemService(StorageManager.class);
+                    VolumeInfo currentVol = storage.findVolumeByUuid(volumeUuid);
+                    if(currentVol != null && currentVol.state == VolumeInfo.STATE_MOUNTED)
+                        volCurStateMounted = true;
+                }
+                if (vol.state == VolumeInfo.STATE_MOUNTED && volCurStateMounted) {
 
                     // Clean up any users or apps that were removed or recreated
                     // while this volume was missing
@@ -2290,8 +2298,14 @@ public class PackageManagerService extends IPackageManager.Stub {
             // Collect vendor overlay packages. (Do this before scanning any apps.)
             // For security and version matching reason, only consider
             // overlay packages if they reside in the right directory.
-            File vendorOverlayDir = new File(VENDOR_OVERLAY_DIR);
-            scanDirTracedLI(vendorOverlayDir, mDefParseFlags
+            String overlayThemeDir = SystemProperties.get(VENDOR_OVERLAY_THEME_PROPERTY);
+            if (!overlayThemeDir.isEmpty()) {
+                scanDirTracedLI(new File(VENDOR_OVERLAY_DIR, overlayThemeDir), mDefParseFlags
+                        | PackageParser.PARSE_IS_SYSTEM
+                        | PackageParser.PARSE_IS_SYSTEM_DIR,
+                        scanFlags, 0);
+            }
+            scanDirTracedLI(new File(VENDOR_OVERLAY_DIR), mDefParseFlags
                     | PackageParser.PARSE_IS_SYSTEM
                     | PackageParser.PARSE_IS_SYSTEM_DIR,
                     scanFlags, 0);
@@ -2316,8 +2330,14 @@ public class PackageManagerService extends IPackageManager.Stub {
                     | PackageParser.PARSE_IS_SYSTEM
                     | PackageParser.PARSE_IS_SYSTEM_DIR, scanFlags, 0);
 
+            // Collected privileged vendor packages.
+            final File privilegedVendorAppDir = new File(Environment.getVendorDirectory(), "priv-app");
+            scanDirLI(privilegedVendorAppDir, PackageParser.PARSE_IS_SYSTEM
+                    | PackageParser.PARSE_IS_SYSTEM_DIR
+                    | PackageParser.PARSE_IS_PRIVILEGED, scanFlags, 0);
+
             // Collect all vendor packages.
-            File vendorAppDir = new File("/vendor/app");
+            File vendorAppDir = new File(Environment.getVendorDirectory(), "app");
             try {
                 vendorAppDir = vendorAppDir.getCanonicalFile();
             } catch (IOException e) {
@@ -2573,38 +2593,6 @@ public class PackageManagerService extends IPackageManager.Stub {
                     applyFactoryDefaultBrowserLPw(user.id);
                     primeDomainVerificationsLPw(user.id);
                 }
-            }
-
-            // Disable components marked for disabling at build-time
-            mDisabledComponentsList = new ArrayList<ComponentName>();
-            for (String name : mContext.getResources().getStringArray(
-                    com.android.internal.R.array.config_disabledComponents)) {
-                ComponentName cn = ComponentName.unflattenFromString(name);
-                mDisabledComponentsList.add(cn);
-                Slog.v(TAG, "Disabling " + name);
-                String className = cn.getClassName();
-                PackageSetting pkgSetting = mSettings.mPackages.get(cn.getPackageName());
-                if (pkgSetting == null || pkgSetting.pkg == null
-                        || !pkgSetting.pkg.hasComponentClassName(className)) {
-                    Slog.w(TAG, "Unable to disable " + name);
-                    continue;
-                }
-                pkgSetting.disableComponentLPw(className, UserHandle.USER_OWNER);
-            }
-
-            // Enable components marked for forced-enable at build-time
-            for (String name : mContext.getResources().getStringArray(
-                    com.android.internal.R.array.config_forceEnabledComponents)) {
-                ComponentName cn = ComponentName.unflattenFromString(name);
-                Slog.v(TAG, "Enabling " + name);
-                String className = cn.getClassName();
-                PackageSetting pkgSetting = mSettings.mPackages.get(cn.getPackageName());
-                if (pkgSetting == null || pkgSetting.pkg == null
-                        || !pkgSetting.pkg.hasComponentClassName(className)) {
-                    Slog.w(TAG, "Unable to enable " + name);
-                    continue;
-                }
-                pkgSetting.enableComponentLPw(className, UserHandle.USER_OWNER);
             }
 
             // Prepare storage for system user really early during boot,
@@ -15934,7 +15922,10 @@ public class PackageManagerService extends IPackageManager.Stub {
         try {
             final String privilegedAppDir = new File(Environment.getRootDirectory(), "priv-app")
                     .getCanonicalPath();
-            return path.getCanonicalPath().startsWith(privilegedAppDir);
+            final String privilegedAppVendorDir = new File(Environment.getVendorDirectory(), "priv-app")
+                    .getCanonicalPath();
+            return (path.getCanonicalPath().startsWith(privilegedAppDir)
+                    || path.getCanonicalPath().startsWith(privilegedAppVendorDir));
         } catch (IOException e) {
             Slog.e(TAG, "Unable to access code path " + path);
         }
@@ -17838,12 +17829,6 @@ Slog.v(TAG, ":: stepped forward, applying functor at tag " + parser.getName());
     public void setComponentEnabledSetting(ComponentName componentName,
             int newState, int flags, int userId) {
         if (!sUserManager.exists(userId)) return;
-        // Don't allow to enable components marked for disabling at build-time
-        if (mDisabledComponentsList.contains(componentName)) {
-            Slog.d(TAG, "Ignoring attempt to set enabled state of disabled component "
-                    + componentName.flattenToString());
-            return;
-        }
         setEnabledSetting(componentName.getPackageName(),
                 componentName.getClassName(), newState, flags, userId, null);
     }
