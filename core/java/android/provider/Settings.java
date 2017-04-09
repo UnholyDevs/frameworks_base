@@ -3718,6 +3718,18 @@ public final class Settings {
         public static final String  RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
         /**
+         * Use AOSP grid style recents
+         * @hide
+         */
+        public static final String RECENTS_USE_GRID = "recents_use_grid";
+
+        /**
+         * show the membar in recents
+         *  @hide
+         */
+        public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
+
+        /**
          * Whether to show Brightness Icon On Brightness Slider
          * @hide
          */
@@ -3891,12 +3903,6 @@ public final class Settings {
          * @hide
          */
         public static final String SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
-
-        /**
-         * show the membar in recents
-         *  @hide
-         */
-        public static final String SYSTEMUI_RECENTS_MEM_DISPLAY = "systemui_recents_mem_display";
 
         /**
          * Whether to allow one finger quick settings expansion on the left or right side of the statusbar.
