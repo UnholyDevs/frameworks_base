@@ -138,4 +138,7 @@
   <!-- FP unlock Boost -->
   <java-symbol type="integer" name="fpunlockboost_duration" />
 
+  <!-- Pocket bridge -->
+  <java-symbol type="string" name="config_pocketBridgeSysfsInpocket" />
+
 </resources>
