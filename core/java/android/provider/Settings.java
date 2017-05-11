@@ -3435,7 +3435,7 @@ public final class Settings {
          */
         public static final String BATTERY_LIGHT_FULL_COLOR = "battery_light_full_color";
 
-	/**
+    /**
          * What color to use for the battery LED while charging - really full (100%)
          * @hide
          */
@@ -3739,7 +3739,7 @@ public final class Settings {
          * show lockscreen alarm
          * @hide
          */
-        public static final String SHOW_LOCKSCREEN_ALARM = "show_lockscreen_alarm";	
+        public static final String SHOW_LOCKSCREEN_ALARM = "show_lockscreen_alarm"; 
 
         /**
          * Whether to show the battery info on the lockscreen while charging
@@ -3753,14 +3753,14 @@ public final class Settings {
          */
         public static final String LOCKSCREEN_CHARGING_CURRENT = "lockscreen_charging_current"; 
  
-		/**
+        /**
          * show lockscreen clock
          *  @hide
          */
         public static final String SHOW_LOCKSCREEN_CLOCK = "show_lockscreen_clock";
 
         /**
-		 * show lockscreen date
+         * show lockscreen date
          * Whether to mute annoying notifications
          * @hide
          */
@@ -3963,13 +3963,7 @@ public final class Settings {
          * Enable double tap gesture anywhere on the lock screen put device to sleep
          * @hide
          */
-        public static final String DOUBLE_TAP_SLEEP_ANYWHERE = "double_tap_sleep_anywhere";        /**
-
-        /**
-         * Whether to launch default music player when headset plugged in
-         * @hide
-         */
-        public static final String HEADSET_CONNECT_PLAYER = "headset_connect_player";
+        public static final String DOUBLE_TAP_SLEEP_ANYWHERE = "double_tap_sleep_anywhere";
 
         /**
          * Whether the phone volume up / down effect should be played
@@ -4159,6 +4153,18 @@ public final class Settings {
          * @hide
          */
         public static final String QS_DATE_TIME_CENTER = "qs_date_time_center";
+
+        /**
+         * Whether to launch default music player when headset plugged in
+         * 0 = don't do anything (default)
+         * 1 = launch only on wired connection
+         * 2 = launch only on bt connection but no carkit
+         * 3 = launch only on bt connection
+         * 4 = launch on both connection types but no carkit
+         * 5 = launch on both connection types
+         * @hide
+         */
+        public static final String HEADSET_CONNECT_PLAYER = "headset_connect_player";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
