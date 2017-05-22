@@ -60,6 +60,9 @@
   <java-symbol type="string" name="singlehandmode_slide_hint_message" />
   <java-symbol type="layout" name="single_hand_window" />
 
+  <!-- Fingerprint axis inversion -->
+  <java-symbol type="bool" name="config_needsFingerprintAxisInversion" />
+
   <!-- call removeCient in cancelAuthentification after stop to
        avoid 3s delay for certain fpc HALs -->
   <java-symbol type="bool" name="config_fingerprintRemoveClientOnCancel" />

@@ -58,6 +58,9 @@
     <string-array name="config_forceEnabledComponents" translatable="false">
     </string-array>
 
+    <!-- Whether the device needs axis inversion for the fingerprint notification panel gesture when rotated -->
+    <bool name="config_needsFingerprintAxisInversion">false</bool>
+
     <!-- call removeCient in cancelAuthentification after stop to
          avoid 3s delay for certain fpc HALs -->
     <bool name="config_fingerprintRemoveClientOnCancel">false</bool>
