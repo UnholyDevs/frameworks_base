@@ -266,15 +266,29 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
     }
 
     private void updateDateTimeCenter() {
-        mDateTimeGroupCenter = isDateTimeGroupCenter();
-	if (mDateTimeGroupCenter && (!(isSettingsIcon || isSettingsExpanded) || !isEdit || !isMultiUserSwitch || !isExpandIndicator)) {
-            mDateTimeAlarmGroup.setVisibility(View.GONE);
-            mDateTimeAlarmCenterGroup.setVisibility(View.VISIBLE);
-        } else {
-            mDateTimeAlarmCenterGroup.setVisibility(View.GONE);
-            mDateTimeAlarmGroup.setVisibility(View.VISIBLE);
-        }
-    }
+        mDateTimeGroupCenter = Settings.System.getInt(mContext.getContentResolver(),
+                 Settings.System.QS_DATE_TIME_CENTER, 1);
+        switch (mDateTimeGroupCenter) {
+            case 0:
+                mDateTimeAlarmCenterGroup.setVisibility(View.GONE);
+                mDateTimeAlarmGroup.setVisibility(View.GONE);
+                break;
+            case 1:
+                mDateTimeAlarmCenterGroup.setVisibility(View.GONE);
+                mDateTimeAlarmGroup.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                if (!(isSettingsIcon && isEdit && isMultiUserSwitch
+                                      && isExpandIndicator && isRunningServices)) {
+                mDateTimeAlarmGroup.setVisibility(View.GONE);
+                mDateTimeAlarmCenterGroup.setVisibility(View.VISIBLE);
+                } else {
+                mDateTimeAlarmCenterGroup.setVisibility(View.GONE);
+                mDateTimeAlarmGroup.setVisibility(View.VISIBLE);
+                }
+                break;
+         }
+     }
 
     @Override
     public int getCollapsedHeight() {
@@ -670,10 +684,4 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
         return Settings.System.getInt(mContext.getContentResolver(),
             Settings.System.QS_MULTIUSER_SWITCH_TOGGLE, 1) == 1;
     }
-
-    public boolean isDateTimeGroupCenter() {
-        return Settings.System.getInt(mContext.getContentResolver(),
-            Settings.System.QS_DATE_TIME_CENTER, 1) == 1;
-    }
 }
-
