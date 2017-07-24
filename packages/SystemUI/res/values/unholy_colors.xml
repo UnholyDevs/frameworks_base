@@ -28,4 +28,8 @@
     <!-- Battery charging color -->
     <color name="system_primary_color">@*android:color/material_blue_grey_900</color>
 
+    <!-- Screen pinning layout -->
+    <color name="screen_pinning_background_color">@*android:color/accent_device_default_light</color>
+    <color name="screen_pinning_button_text">@android:color/white</color>
+
 </resources>
