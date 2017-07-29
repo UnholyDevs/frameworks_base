@@ -79,12 +79,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/notifications/Trill.ogg:system/media/audio/notifications/Trill.ogg \
     $(LOCAL_PATH)material/ringtones/Atria.ogg:system/media/audio/ringtones/Atria.ogg \
     $(LOCAL_PATH)material/ringtones/Beats.ogg:system/media/audio/ringtones/Beats.ogg \
+    $(LOCAL_PATH)material/ringtones/Buried_By_The_Dead.ogg:system/media/audio/ringtones/Buried_By_The_Dead.ogg \
     $(LOCAL_PATH)material/ringtones/Callisto.ogg:system/media/audio/ringtones/Callisto.ogg \
     $(LOCAL_PATH)material/ringtones/Dance_party.ogg:system/media/audio/ringtones/Dance_party.ogg \
     $(LOCAL_PATH)material/ringtones/Dione.ogg:system/media/audio/ringtones/Dione.ogg \
     $(LOCAL_PATH)material/ringtones/Early_bird.ogg:system/media/audio/ringtones/Early_bird.ogg \
     $(LOCAL_PATH)material/ringtones/Ganymede.ogg:system/media/audio/ringtones/Ganymede.ogg \
     $(LOCAL_PATH)material/ringtones/Hey_hey.ogg:system/media/audio/ringtones/Hey_hey.ogg \
+    $(LOCAL_PATH)material/ringtones/Kill_Or_Become.ogg:system/media/audio/ringtones/Kill_Or_Become.ogg \
     $(LOCAL_PATH)material/ringtones/Luna.ogg:system/media/audio/ringtones/Luna.ogg \
     $(LOCAL_PATH)material/ringtones/Oberon.ogg:system/media/audio/ringtones/Oberon.ogg \
     $(LOCAL_PATH)material/ringtones/Phobos.ogg:system/media/audio/ringtones/Phobos.ogg \
