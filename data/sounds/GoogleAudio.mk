@@ -77,6 +77,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/notifications/Note.ogg:system/media/audio/notifications/Note.ogg \
     $(LOCAL_PATH)material/notifications/Strum.ogg:system/media/audio/notifications/Strum.ogg \
     $(LOCAL_PATH)material/notifications/Trill.ogg:system/media/audio/notifications/Trill.ogg \
+    $(LOCAL_PATH)material/ringtones/Apocalyptic_Havoc.ogg:system/media/audio/ringtones/Apocalyptic_Havoc.ogg \
     $(LOCAL_PATH)material/ringtones/Atria.ogg:system/media/audio/ringtones/Atria.ogg \
     $(LOCAL_PATH)material/ringtones/Beats.ogg:system/media/audio/ringtones/Beats.ogg \
     $(LOCAL_PATH)material/ringtones/Buried_By_The_Dead.ogg:system/media/audio/ringtones/Buried_By_The_Dead.ogg \
