@@ -133,7 +133,7 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
     private boolean isEdit;
     private boolean isExpandIndicator;
     private boolean isMultiUserSwitch;
-    private boolean mDateTimeGroupCenter;
+    private int mDateTimeGroupCenter;
 
     public QuickStatusBarHeader(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -279,7 +279,7 @@ public class QuickStatusBarHeader extends BaseStatusBarHeader implements
                 break;
             case 2:
                 if (!(isSettingsIcon && isEdit && isMultiUserSwitch
-                                      && isExpandIndicator && isRunningServices)) {
+                                      && isExpandIndicator)) {
                 mDateTimeAlarmGroup.setVisibility(View.GONE);
                 mDateTimeAlarmCenterGroup.setVisibility(View.VISIBLE);
                 } else {
