@@ -79,5 +79,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/ringtones/Schools_out.ogg:system/media/audio/ringtones/Schools_out.ogg \
     $(LOCAL_PATH)material/ringtones/The_big_adventure.ogg:system/media/audio/ringtones/The_big_adventure.ogg \
     $(LOCAL_PATH)material/ringtones/Zen_too.ogg:system/media/audio/ringtones/Zen_too.ogg \
+    $(LOCAL_PATH)material/ringtones/Apocalyptic_Havoc.ogg:system/media/audio/ringtones/Apocalyptic_Havoc.ogg \
     $(LOCAL_PATH)material/ringtones/Buried_By_The_Dead.ogg:system/media/audio/ringtones/Buried_By_The_Dead.ogg \
     $(LOCAL_PATH)material/ringtones/Kill_Or_Become.ogg:system/media/audio/ringtones/Kill_Or_Become.ogg \
