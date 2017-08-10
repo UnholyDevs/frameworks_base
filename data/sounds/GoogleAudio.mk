@@ -77,6 +77,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/notifications/Tethys.ogg:system/media/audio/notifications/Tethys.ogg \
     $(LOCAL_PATH)material/notifications/Titan.ogg:system/media/audio/notifications/Titan.ogg \
     $(LOCAL_PATH)material/notifications/Trill.ogg:system/media/audio/notifications/Trill.ogg \
+    $(LOCAL_PATH)material/ringtones/Apocalyptic_Havoc.ogg:system/media/audio/ringtones/Apocalyptic_Havoc.ogg \
     $(LOCAL_PATH)material/ringtones/Atria.ogg:system/media/audio/ringtones/Atria.ogg \
     $(LOCAL_PATH)material/ringtones/Beats.ogg:system/media/audio/ringtones/Beats.ogg \
     $(LOCAL_PATH)material/ringtones/Buried_By_The_Dead.ogg:system/media/audio/ringtones/Buried_By_The_Dead.ogg \
