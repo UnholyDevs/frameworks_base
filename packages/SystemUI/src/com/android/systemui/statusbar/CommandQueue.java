@@ -78,6 +78,7 @@ public class CommandQueue extends IStatusBar.Stub {
     private static final int MSG_DISMISS_KEYBOARD_SHORTCUTS    = 32 << MSG_SHIFT;
     private static final int MSG_HANDLE_SYSNAV_KEY             = 33 << MSG_SHIFT;
     private static final int MSG_SCREEN_PINNING_STATE_CHANGED  = 34 << MSG_SHIFT;
+    private static final int MSG_TOGGLE_FLASHLIGHT  = 36 << MSG_SHIFT;
 
     public static final int FLAG_EXCLUDE_NONE = 0;
     public static final int FLAG_EXCLUDE_SEARCH_PANEL = 1 << 0;
@@ -134,10 +135,18 @@ public class CommandQueue extends IStatusBar.Stub {
         void clickTile(ComponentName tile);
         void handleSystemNavigationKey(int arg1);
         void screenPinningStateChanged(boolean enabled);
+        void toggleFlashlight();
     }
 
     public CommandQueue(Callbacks callbacks) {
         mCallbacks = callbacks;
+    }
+
+    public void toggleFlashlight() {
+        synchronized (mLock) {
+            mHandler.removeMessages(MSG_TOGGLE_FLASHLIGHT);
+            mHandler.sendEmptyMessage(MSG_TOGGLE_FLASHLIGHT);
+        }
     }
 
     public void screenPinningStateChanged(boolean enabled) {
@@ -528,8 +537,10 @@ public class CommandQueue extends IStatusBar.Stub {
                 case MSG_SCREEN_PINNING_STATE_CHANGED:
                     mCallbacks.screenPinningStateChanged(msg.arg1 != 0);
                     break;
+                case MSG_TOGGLE_FLASHLIGHT:
+                    mCallbacks.toggleFlashlight();
+                    break;
             }
         }
     }
 }
-
