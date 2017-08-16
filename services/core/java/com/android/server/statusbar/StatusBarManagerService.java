@@ -19,6 +19,7 @@ package com.android.server.statusbar;
 import android.app.StatusBarManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Binder;
@@ -477,6 +478,28 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
         }
     }
 
+    @Override
+    public void toggleNavigationEditor() {
+        enforceNavigationEditor();
+        if (mBar != null) {
+            try {
+                mBar.toggleNavigationEditor();
+            } catch (RemoteException ex) {
+            }
+        }
+    }
+
+    @Override
+    public void dispatchNavigationEditorResults(Intent intent) {
+        enforceNavigationEditor();
+        if (mBar != null) {
+            try {
+                mBar.dispatchNavigationEditorResults(intent);
+            } catch (RemoteException ex) {
+            }
+        }
+    }
+
     public void addTile(ComponentName component) {
         enforceStatusBarOrShell();
 
@@ -771,6 +794,11 @@ public class StatusBarManagerService extends IStatusBarService.Stub {
 
     private void enforceStatusBarService() {
         mContext.enforceCallingOrSelfPermission(android.Manifest.permission.STATUS_BAR_SERVICE,
+                "StatusBarManagerService");
+    }
+
+    private void enforceNavigationEditor() {
+        mContext.enforceCallingOrSelfPermission(android.Manifest.permission.NAVIGATION_EDITOR,
                 "StatusBarManagerService");
     }
 

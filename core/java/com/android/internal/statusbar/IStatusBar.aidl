@@ -17,6 +17,7 @@
 package com.android.internal.statusbar;
 
 import android.content.ComponentName;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
@@ -98,6 +99,8 @@ oneway interface IStatusBar
     void startAssist(in Bundle args);
     void screenPinningStateChanged(boolean enabled);
     void toggleFlashlight();
+    void toggleNavigationEditor();
+    void dispatchNavigationEditorResults(in Intent intent);
 
     /**
      * Notifies the status bar that a camera launch gesture has been detected.

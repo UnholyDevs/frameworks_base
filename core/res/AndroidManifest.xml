@@ -498,7 +498,6 @@
 
     <!-- Custom protected broadcasts -->
     <protected-broadcast android:name="projekt.substratum.APP_CRASHED" />
-    <protected-broadcast android:name="intent_navbar_edit" />
 
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
@@ -3137,6 +3136,13 @@
     <permission android:name="oms.permission.MODIFY_OVERLAYS"
         android:label="@string/permlab_modifyOverlays"
         android:description="@string/permdesc_modifyOverlays"
+        android:protectionLevel="signatureOrSystem" />
+
+    <!-- Allows an application to toggle navigation button editor.
+         @hide -->
+    <permission android:name="android.permission.NAVIGATION_EDITOR"
+        android:label="@string/permlab_toggleNavigationEditor"
+        android:description="@string/permdesc_toggleNavigationEditor"
         android:protectionLevel="signatureOrSystem" />
 
     <application android:process="system"

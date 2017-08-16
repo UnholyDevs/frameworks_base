@@ -1374,6 +1374,18 @@ public abstract class BaseStatusBar extends SystemUI implements
             Log.d(TAG, "StatusBar API toggleFlashlight");
     }
 
+    @Override
+    public void toggleNavigationEditor() {
+        if (DEBUG)
+            Log.d(TAG, "StatusBar API toggleNavigationEditor");
+    }
+
+    @Override
+    public void dispatchNavigationEditorResults(Intent intent) {
+        if (DEBUG)
+            Log.d(TAG, "StatusBar API dispatchNavigationEditorResults " + intent);
+    }
+
     protected H createHandler() {
          return new H();
     }

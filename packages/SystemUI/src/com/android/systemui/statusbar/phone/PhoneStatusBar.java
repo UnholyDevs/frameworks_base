@@ -1766,6 +1766,18 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     }
 
     @Override
+    public void toggleNavigationEditor() {
+        super.toggleNavigationEditor();
+        mNavigationController.toggleNavigationEditor();
+    }
+
+    @Override
+    public void dispatchNavigationEditorResults(Intent intent) {
+        super.dispatchNavigationEditorResults(intent);
+        mNavigationController.dispatchNavigationEditorResults(intent);
+    }
+
+    @Override
     public void setIcon(String slot, StatusBarIcon icon) {
         mIconController.setIcon(slot, icon);
     }
