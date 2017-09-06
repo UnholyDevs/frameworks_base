@@ -4114,12 +4114,18 @@ public final class Settings {
          */
         public static final String VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control";
 
-        /**
-         * 0 - wallpaper based
-         * 1 - force light
-         * 2 - force dark
-         * @hide
-         */
+       /**
+        * Whether to show Qs panel footer warnings like for active VPN
+        * @hide
+        */
+       public static final String QS_FOOTER_WARNINGS = "qs_footer_warnings";
+
+       /**
+        * 0 - wallpaper based
+        * 1 - force light
+        * 2 - force dark
+        * @hide
+        */     
         public static final String SYSTEM_UI_THEME = "system_ui_theme";
 
         /**
