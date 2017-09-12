@@ -44,6 +44,10 @@
     <string name="quick_settings_smart_pixels">Smart pixels</string>
     <string name="quick_settings_smart_pixels_on_power_save">Auto-enabled smart pixels</string>
 
+    <!-- Screenshot QS tile -->
+    <string name="quick_settings_screenshot_label">Screenshot</string>
+    <string name="quick_settings_region_screenshot_label">Partial screenshot</string>
+
     <!-- Theme tile -->
     <string name="systemui_theme_style_title">Style</string>
     <string name="systemui_theme_style_auto">Automatic</string>
