@@ -33,4 +33,7 @@
     <!-- Notification: Menu row: Snooze options -->
     <string name="snooze_option_24_hour">24 hours</string>
 
+    <!-- SystemUI Tuner Parts -->
+    <string name="systemui_tuner_navbar_title">Stock settings</string>
+
 </resources>
