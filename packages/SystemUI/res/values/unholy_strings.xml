@@ -17,4 +17,13 @@
     <string name="accessibility_quick_settings_caffeine_off">Caffeine off</string>
     <string name="accessibility_quick_settings_caffeine_on">Caffeine on</string>
 
+    <!-- Reboot options -->
+    <string name="global_action_restart_advanced">Advanced reboot</string>
+    <string name="global_action_restart_recovery">Go to recovery</string>
+    <string name="global_action_restart_bootloader">Go to bootloader</string>
+
+    <!-- Lockscreen hide shortcuts -->
+    <string name="lockscreen_default">Default</string>
+    <string name="lockscreen_hidden">None</string>
+
 </resources>
