@@ -75,6 +75,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/notifications/Flick.ogg:system/media/audio/notifications/Flick.ogg \
     $(LOCAL_PATH)material/notifications/Hey.ogg:system/media/audio/notifications/Hey.ogg \
     $(LOCAL_PATH)material/notifications/Note.ogg:system/media/audio/notifications/Note.ogg \
+    $(LOCAL_PATH)material/notifications/Pop.ogg:system/media/audio/notifications/Pop.ogg \
     $(LOCAL_PATH)material/notifications/Strum.ogg:system/media/audio/notifications/Strum.ogg \
     $(LOCAL_PATH)material/notifications/Trill.ogg:system/media/audio/notifications/Trill.ogg \
     $(LOCAL_PATH)material/ringtones/Apocalyptic_Havoc.ogg:system/media/audio/ringtones/Apocalyptic_Havoc.ogg \
