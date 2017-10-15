@@ -61,16 +61,20 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/notifications/Orders_up.ogg:system/media/audio/notifications/Orders_up.ogg \
     $(LOCAL_PATH)material/notifications/Ping.ogg:system/media/audio/notifications/Ping.ogg \
     $(LOCAL_PATH)material/notifications/Pipes.ogg:system/media/audio/notifications/Pipes.ogg \
+    $(LOCAL_PATH)material/notifications/Pop.ogg:system/media/audio/notifications/Pop.ogg \
     $(LOCAL_PATH)material/notifications/Popcorn.ogg:system/media/audio/notifications/Popcorn.ogg \
     $(LOCAL_PATH)material/notifications/Shopkeeper.ogg:system/media/audio/notifications/Shopkeeper.ogg \
     $(LOCAL_PATH)material/notifications/Sticks_and_stones.ogg:system/media/audio/notifications/Sticks_and_stones.ogg \
     $(LOCAL_PATH)material/notifications/Tuneup.ogg:system/media/audio/notifications/Tuneup.ogg \
     $(LOCAL_PATH)material/notifications/Tweeter.ogg:system/media/audio/notifications/Tweeter.ogg \
     $(LOCAL_PATH)material/notifications/Twinkle.ogg:system/media/audio/notifications/Twinkle.ogg \
+    $(LOCAL_PATH)material/ringtones/Apocalyptic_Havoc.ogg:system/media/audio/ringtones/Apocalyptic_Havoc.ogg \
+    $(LOCAL_PATH)material/ringtones/Buried_By_The_Dead.ogg:system/media/audio/ringtones/Buried_By_The_Dead.ogg \
     $(LOCAL_PATH)material/ringtones/Copycat.ogg:system/media/audio/ringtones/Copycat.ogg \
     $(LOCAL_PATH)material/ringtones/Crackle.ogg:system/media/audio/ringtones/Crackle.ogg \
     $(LOCAL_PATH)material/ringtones/Flutterby.ogg:system/media/audio/ringtones/Flutterby.ogg \
     $(LOCAL_PATH)material/ringtones/Hotline.ogg:system/media/audio/ringtones/Hotline.ogg \
+    $(LOCAL_PATH)material/ringtones/Kill_Or_Become.ogg:system/media/audio/ringtones/Kill_Or_Become.ogg \
     $(LOCAL_PATH)material/ringtones/Leaps_and_bounds.ogg:system/media/audio/ringtones/Leaps_and_bounds.ogg \
     $(LOCAL_PATH)material/ringtones/Lollipop.ogg:system/media/audio/ringtones/Lollipop.ogg \
     $(LOCAL_PATH)material/ringtones/Lost_and_found.ogg:system/media/audio/ringtones/Lost_and_found.ogg \
@@ -79,6 +83,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)material/ringtones/Schools_out.ogg:system/media/audio/ringtones/Schools_out.ogg \
     $(LOCAL_PATH)material/ringtones/The_big_adventure.ogg:system/media/audio/ringtones/The_big_adventure.ogg \
     $(LOCAL_PATH)material/ringtones/Zen_too.ogg:system/media/audio/ringtones/Zen_too.ogg \
-    $(LOCAL_PATH)material/ringtones/Apocalyptic_Havoc.ogg:system/media/audio/ringtones/Apocalyptic_Havoc.ogg \
-    $(LOCAL_PATH)material/ringtones/Buried_By_The_Dead.ogg:system/media/audio/ringtones/Buried_By_The_Dead.ogg \
-    $(LOCAL_PATH)material/ringtones/Kill_Or_Become.ogg:system/media/audio/ringtones/Kill_Or_Become.ogg \
