@@ -5,9 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
-import android.os.UserHandle;
 import android.os.UserManager;
-import android.provider.Settings;
 import android.util.ArraySet;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -576,10 +574,8 @@ public class OpaLayout extends FrameLayout implements ButtonInterface{
     }
 
     public void setOpaEnabled(boolean enabled) {
-        final boolean opaToggle = Settings.System.getIntForUser(this.getContext().getContentResolver(),
-            Settings.System.PIXEL_NAV_ANIMATION, 1, UserHandle.USER_CURRENT) == 1;
         final boolean b1 = getContext().getResources().getBoolean(R.bool.config_allowOpaLayout);
-        final boolean b2 = (enabled || UserManager.isDeviceInDemoMode(getContext())) && b1 && opaToggle;
+        final boolean b2 = (enabled || UserManager.isDeviceInDemoMode(getContext())) && b1;
         mOpaEnabled = b2;
         if (b2) {
             showAllOpa();
