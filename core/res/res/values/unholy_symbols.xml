@@ -81,4 +81,8 @@
   <java-symbol type="array" name="debugBoost_activityList" />
   <java-symbol type="integer" name="debugBoost_timeout" />
   <java-symbol type="array" name="debugBoost_param_value" />
+
+  <!-- Toast text and bg colors -->
+  <java-symbol type="color" name="toast_bg_color" />
+  <java-symbol type="color" name="toast_text_color" />
 </resources>
