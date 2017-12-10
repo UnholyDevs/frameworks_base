@@ -3928,12 +3928,19 @@ public final class Settings {
         /** @hide */
         private static final Validator SHOW_BATTERY_PERCENT_VALIDATOR = sBooleanValidator;
 
+        /** Beginning of Unholy setttings**/
+
         /**
-         * IMPORTANT: If you add a new public settings you also have to add it to
-         * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
-         * it to PRIVATE_SETTINGS below. Also add a validator that can validate
-         * the setting value. See an example above.
+         * Use latest screen-on brightness value for Ambient Display
+         * @hide
          */
+        public static final String AMBIENT_DOZE_AUTO_BRIGHTNESS = "ambient_doze_auto_brightness";
+
+        /**
+         * Use latest screen-on brightness value for Ambient Display
+         * @hide
+         */
+        public static final String LAST_DOZE_AUTO_BRIGHTNESS = "last_doze_auto_brightness";
 
         /**
          * Whether to use the MTP by default after connecting to PC
