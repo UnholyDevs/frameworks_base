@@ -4251,7 +4251,12 @@ public final class Settings {
          * Enable double tap gesture anywhere on the lock screen put device to sleep
          * @hide
          */
-        public static final String DOUBLE_TAP_SLEEP_LOCKSCREEN = "double_tap_sleep_lockscreen";        /**
+        public static final String DOUBLE_TAP_SLEEP_LOCKSCREEN = "double_tap_sleep_lockscreen";
+
+        /**
+         * @hide
+         */
+        public static final String SHOW_USB_MODE_DIALOG = "show_usb_mode_dialog";         
 
         /**
          * Whether to enable the pixel navbar animation
