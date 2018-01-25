@@ -19,4 +19,18 @@
     <!-- Updater snackbar text color -->
     <color name="updater_snackbar_text_color">@android:color/white</color>
 
+    <!-- Misc colors -->
+    <color name="theme_color1">@color/black</color>
+    <color name="theme_color2">@color/black</color>
+    <color name="theme_color3">@color/black</color>
+    <color name="theme_color4">@color/black</color>
+    <color name="theme_color5">@color/black</color>
+    <color name="theme_color6">@color/black</color>
+    <color name="theme_color7">@color/black</color>
+    <color name="theme_color8">@color/black</color>
+    <color name="theme_color9">@color/black</color>
+    <color name="theme_text1">@color/black</color>
+    <color name="theme_text2">@color/black</color>
+    <color name="theme_text3">@color/black</color>
+
 </resources>
