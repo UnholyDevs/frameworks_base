@@ -25,4 +25,7 @@
     <!-- Floating action button -->
     <color name="fab_color">@*android:color/accent_device_default_light</color>
     <color name="floating_action_button_icon_color">@android:color/white</color>
+
+    <!-- Zen QS panel -->
+    <color name="zen_qs_panel_close_button_color">@android:color/white</color>
 </resources>
