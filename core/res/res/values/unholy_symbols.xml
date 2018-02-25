@@ -73,6 +73,9 @@
   <java-symbol type="bool" name="config_enableCpuBoostForPanelViewFling" />
   <java-symbol type="array" name="panelview_flingboost_param_value" />
 
+  <!-- Notification info -->
+  <java-symbol type="color" name="notification_info_button_text" />
+
   <!-- SSDOU scroll boost optimization -->
   <java-symbol type="bool" name="config_debugBoost" />
   <java-symbol type="array" name="debugBoost_activityList" />
