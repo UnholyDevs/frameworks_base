@@ -2911,6 +2911,18 @@ public class StatusBar extends SystemUI implements DemoMode,
         return themeInfo != null && themeInfo.isEnabled();
     }
 
+    // Check for the blackaf system theme
+    public boolean isUsingBlackAFTheme() {
+        OverlayInfo themeInfo = null;
+        try {
+            themeInfo = mOverlayManager.getOverlayInfo("com.android.system.theme.blackaf",
+                    mCurrentUserId);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return themeInfo != null && themeInfo.isEnabled();
+    }
+
     // Unloads the stock dark theme
     public void unloadStockDarkTheme() {
         OverlayInfo themeInfo = null;
@@ -2930,7 +2942,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     public void unfuckBlackWhiteAccent() {
         OverlayInfo themeInfo = null;
         try {
-            if (isUsingDarkTheme()) {
+             if (isUsingDarkTheme() || (isUsingBlackAFTheme())) {
                 themeInfo = mOverlayManager.getOverlayInfo("com.accents.black",
                         mCurrentUserId);
                 if (themeInfo != null && themeInfo.isEnabled()) {
@@ -4736,6 +4748,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         int userThemeSetting = Settings.System.getIntForUser(mContext.getContentResolver(),
                 Settings.System.SYSTEM_UI_THEME, 0, mCurrentUserId);
         boolean useDarkTheme = false;
+        boolean useBlackAFTheme = false;
         if (userThemeSetting == 0) {
             // The system wallpaper defines if QS should be light or dark.
             WallpaperColors systemColors = mColorExtractor
@@ -4747,6 +4760,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             unfuckBlackWhiteAccent();
         } else {
             useDarkTheme = userThemeSetting == 2;
+            useBlackAFTheme = userThemeSetting == 3;
             // Check for black and white accent so we don't end up
             // with white on white or black on black
             unfuckBlackWhiteAccent();
@@ -4762,6 +4776,28 @@ public class StatusBar extends SystemUI implements DemoMode,
                 mOverlayManager.setEnabled("com.android.gboard.theme.dark",
                         useDarkTheme, mCurrentUserId);
                 if (useDarkTheme) {
+                    unloadStockDarkTheme();
+                }
+            } catch (RemoteException e) {
+                Log.w(TAG, "Can't change theme", e);
+            }
+        }
+        if (isUsingBlackAFTheme() != useBlackAFTheme) {
+            try {
+                mOverlayManager.setEnabled("com.android.system.theme.blackaf",
+                        useBlackAFTheme, mCurrentUserId);
+                mOverlayManager.setEnabled("com.android.settings.theme.blackaf",
+                        useBlackAFTheme, mCurrentUserId);
+                mOverlayManager.setEnabled("com.android.dui.theme.blackaf",
+                        useBlackAFTheme, mCurrentUserId);
+                mOverlayManager.setEnabled("com.android.gboard.theme.blackaf",
+                        useBlackAFTheme, mCurrentUserId);
+                mOverlayManager.setEnabled("com.android.updater.theme.blackaf",
+                        useBlackAFTheme, mCurrentUserId);
+                // Check for black and white accent so we don't end up
+                // with white on white or black on black
+                unfuckBlackWhiteAccent();
+                if (useBlackAFTheme) {
                     unloadStockDarkTheme();
                 }
             } catch (RemoteException e) {
@@ -4927,7 +4963,7 @@ public class StatusBar extends SystemUI implements DemoMode,
         } else if (accentSetting == 20) {
             try {
                 // If using a dark theme we use the white accent, otherwise use the black accent
-                if (isUsingDarkTheme()) {
+                 if (isUsingDarkTheme() || (isUsingBlackAFTheme())) {
                     mOverlayManager.setEnabled("com.accents.white",
                             true, mCurrentUserId);
                 } else {
