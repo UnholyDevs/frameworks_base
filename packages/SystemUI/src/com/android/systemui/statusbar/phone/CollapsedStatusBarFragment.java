@@ -67,6 +67,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private DarkIconManager mDarkIconManager;
     private SignalClusterView mSignalClusterView;
     private LinearLayout mCenterClockLayout;
+
     // custom carrier label
     private View mCustomCarrierLabel;
     private int mShowCarrierLabel;
@@ -74,6 +75,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     // Unholy start
     private ImageView mUnholyLogo;
     private ImageView mUnholyLogoRight;
+    private int mShowLogo;
     private final Handler mHandler = new Handler();
 
      private class SettingsObserver extends ContentObserver {
@@ -93,12 +95,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         }
     }
     private SettingsObserver mSettingsObserver = new SettingsObserver(mHandler);
-
-    // Unholy start
-    private View mUnholyLogo;
-    private View mUnholyLogoRight;
-    private int mShowLogo;
-    private final Handler mHandler = new Handler();
 
     private class UnholySettingsObserver extends ContentObserver {
         UnholySettingsObserver(Handler handler) {
@@ -187,8 +183,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         super.onDestroyView();
         Dependency.get(DarkIconDispatcher.class).removeDarkReceiver(mSignalClusterView);
         Dependency.get(StatusBarIconController.class).removeIconGroup(mDarkIconManager);
-        Dependency.get(DarkIconDispatcher.class).removeDarkReceiver(mScrewdLogo);
-        Dependency.get(DarkIconDispatcher.class).removeDarkReceiver(mScrewdLogoRight);
+        Dependency.get(DarkIconDispatcher.class).removeDarkReceiver(mUnholyLogo);
+        Dependency.get(DarkIconDispatcher.class).removeDarkReceiver(mUnholyLogoRight);
         if (mNetworkController.hasEmergencyCryptKeeperText()) {
             mNetworkController.removeCallback(mSignalCallback);
         }
