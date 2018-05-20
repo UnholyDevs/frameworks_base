@@ -37,4 +37,9 @@ public class UnholyUtils {
             e.printStackTrace();
         }
     }
+
+    public static boolean isChineseLanguage() {
+       return Resources.getSystem().getConfiguration().locale.getLanguage().startsWith(
+               Locale.CHINESE.getLanguage());
+    }
 }
